@@ -1,0 +1,76 @@
+create database constrain;
+use constrain;
+create table details (
+sid int unique not null,
+firstname varchar(25) not null,
+middlename varchar(25),
+lastname varchar(25) not null,
+username varchar(25) not null unique,
+pass varchar(25) not null unique,
+pmno long not null,
+smno long
+);
+insert into details (sid,firstname,middlename,lastname,username,pass,pmno,smno) values 
+(1,'raghava','reddy','kadiri', 'raghava4321','raghava8985', 7680936803,4588766789);
+insert into details (sid,firstname,lastname,username,pass,pmno) values 
+(2,'nithin','kancharla','nithin4321','nithin123',8746345634),
+(3,'prasad','durga','prasad4321','prasad123',7654768976);
+select * from details;
+alter table details modify pass varchar(25) not null;
+desc details;
+insert into details (sid,firstname,lastname,username,pass,pmno) values 
+(4,'nithin','kancharla','nithin433421','nithin12345',8746345634);
+
+
+
+
+create database constrain;
+use constrain;
+create table pricheck (
+sno int primary key,
+sname varchar(25) not null,
+age int,
+check (age>=18 and age<=25),
+phno long
+);
+desc table pricheck;
+insert into pricheck (sno,sname,age,phno) values
+(1,'raghava',19,985809597),
+(2,'nithin',25,231456987),
+(3,'bhuvan',20,986553412),
+(4,'karthik',18,6246324991),
+(5,'sai',22,5325956269);
+select * from pricheck;
+
+
+
+use constrain;
+create table category(
+cid int primary key,
+cname varchar(25) not null
+);
+insert into category (cid,cname) values
+(1001,'electronics'),
+(1002,'furniture'),
+(1003,'fashion');
+select * from category;
+create table products(
+pid int primary key,
+pname varchar(25) not null,
+cid int not null ,
+foreign key (cid) REFERENCES category (cid)
+);
+insert into products(pid,pname,cid) values 
+( 101,'ear pods',1001),
+(102,'dinning table',1002),
+(103,'mobiles',1001),
+(104,'shoes',1003);
+select * from products;
+update category set cid = 1004 where cid = 1002;
+
+
+
+
+
+
+
