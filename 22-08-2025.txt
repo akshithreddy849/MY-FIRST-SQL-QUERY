@@ -1,0 +1,77 @@
+           UPDATE AND ALTER
+show databases;
+create database sathyabama;
+use sathyabama;
+create table student (
+sid int primary key,
+sname varchar(25),
+semail varchar(30),
+sbranch varchar(10),
+sdept varchar(10)
+);
+show tables from sathyabama;
+desc student;
+select * from student;
+insert into student(sid,sname,semail,sbranch,sdept)values
+(1,'raghava','raghava80@gmail.com','BE','cse' ),
+(2,'prasad','prasad80@gmail.com','BE','cse' ),
+(3,'gopi','gopi80@gmail.com','btech','mech'),
+(4,'nithin','nithin80@gmail.com','btech','civil');
+select * from  student;
+alter table student drop column sbranch ;
+alter table student modify column sdept varchar(30);
+alter table student add column age int;
+insert into student(age)values(20);
+update student set sdept = 'ece' where sid = 0002;
+update student set age = '25' where sid = 0002;
+update student set age = '26' where sid = 0001;
+
+
+
+
+        
+          SAVEPOINT AND ROLLBACK
+create database cse;
+use cse;
+create table information(
+    regno int,
+    name varchar(20)
+);
+start transaction;
+insert into information (regno,name) values(43110381,'avinash');
+SAVEPOINT a;
+SELECT * FROM information;
+insert into information (regno,name) values(43110380,'raghava');
+SAVEPOINT b; 
+ROLLBACK TO a;
+SELECT * FROM information;
+
+
+
+
+     DROP DATABASE
+create database sathyabama;
+use sathyabama;
+create table student (
+sid int primary key,
+sname varchar(25),
+semail varchar(30),
+sbranch varchar(10),
+sdept varchar(10)
+);
+show tables from sathyabama;
+desc student;
+select * from student;
+insert into student(sid,sname,semail,sbranch,sdept)values
+(1,'raghava','raghava80@gmail.com','BE','cse' ),
+(2,'prasad','prasad80@gmail.com','BE','cse' ),
+(3,'gopi','gopi80@gmail.com','btech','mech'),
+(4,'nithin','nithin80@gmail.com','btech','civil');
+drop database sathyabama;
+
+
+
+
+
+
+
